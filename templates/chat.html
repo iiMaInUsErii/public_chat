@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+<script src="path/to/dayjs/dayjs.min.js"></script>
+<div class="mui-panel">
+    {{ name }}
+</div>
+<div>
+    <div class='mui-panel'>
+    {% for message in messages %}
+    <div class={{ 'right' if message[1] == name else 'left' }}>
+        <span id="message">
+            <b>{{ '' if message[1] == name else message[1] }}</b> {{ message[2] }}
+            <sub class="time"></sub>
+        </span>
+    </div>
+    {% endfor %}
+    </div>
+    <form action="new" method="post"> 
+        <input style="display: none;" name="name" value="{{ name }}"/>
+        <input id="text" name="text"/>
+        <button class="mui-btn mui-btn--small mui-btn--primary small" type="submit">+</button>
+    </form>
+</div>
+{% endblock %}
