@@ -9,16 +9,23 @@
     {% for message in messages %}
     <div class={{ 'right' if message[1] == name else 'left' }}>
         <span id="message">
-            <b>{{ '' if message[1] == name else message[1] }}</b> {{ message[2] }}
+            <!--<b>{{ '' if message[1] == name else message[1] }}</b>-->
+            {{ message[2] }}
             <sub class="time"></sub>
         </span>
     </div>
     {% endfor %}
     </div>
-    <form action="new" method="post"> 
+    <div style="height: 35px;"></div>
+    <form id="new-message-panel" action="new" method="post">
         <input style="display: none;" name="name" value="{{ name }}"/>
-        <input id="text" name="text"/>
-        <button class="mui-btn mui-btn--small mui-btn--primary small" type="submit">+</button>
+        <input id="text" name="text" placeholder="Написать сообщение..."/>
+        <button class="mui-btn mui-btn--fab mui-btn--primary" type="submit">+</button>
     </form>
 </div>
+<script>
+    setTimeout(() => {
+        scroll(0,1000);
+    }, 1)
+</script>
 {% endblock %}
