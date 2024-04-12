@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+<form style="display: none;" action="chat" method="post"> 
+    <input name="name" value="{{ name }}"/>
+    <button id="btn" class="mui-btn mui-btn--small mui-btn--primary small" type="submit">+</button>
+</form>
+<script>
+    document.getElementById('btn').click()
+</script>
+{% endblock %}
