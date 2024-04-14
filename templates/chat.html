@@ -1,25 +1,24 @@
 {% extends 'base.html' %}
 {% block content %}
-<script src="path/to/dayjs/dayjs.min.js"></script>
 <div class="mui-panel">
-    {{ name }}
+    <b>Room: {{ room }}</b> / {{ name }}
+    <a href="/logout">Log Out</a>
 </div>
 <div>
     <div class='mui-panel'>
     {% for message in messages %}
-    <div class={{ 'right' if message[1] == name else 'left' }}>
+    <div class={{ 'right' if message[2] == name else 'left' }}>
         <span id="message">
-            <!--<b>{{ '' if message[1] == name else message[1] }}</b>-->
-            {{ message[2] }}
-            <sub class="time"></sub>
+            <b>{{ '' if message[2] == name else message[2] }}</b>
+            {{ message[3] }}
+            <sub class="time">{{ message[5] }} / {{ message[4] }}</sub>
         </span>
     </div>
     {% endfor %}
     </div>
     <div style="height: 35px;"></div>
     <form id="new-message-panel" action="new" method="post">
-        <input style="display: none;" name="name" value="{{ name }}"/>
-        <input id="text" name="text" placeholder="Написать сообщение..."/>
+        <input id="text" name="text" placeholder="Написать сообщение..." required="true"/>
         <button class="mui-btn mui-btn--fab mui-btn--primary" type="submit">+</button>
     </form>
 </div>
